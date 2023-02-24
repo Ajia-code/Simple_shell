@@ -1,8 +1,8 @@
 <h1> Command interpreter - Simple Shell poject</h1></p>
 
-## BACKGROUND
+## Description
 
-As part of the ALX Software Engineering Course, we impliimplem the shell program with some capabilities similar to those of the modern command line interpreters in Linux distributions.
+As part of the ALX Software Engineering Course, we implemented the shell program with some capabilities similar to those of the modern command line interpreters in Linux distributions.
 
 ## Compilation
 
