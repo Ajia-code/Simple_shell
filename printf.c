@@ -1,95 +1,106 @@
 #include "main.h"
-/**
- * _putchar - Entry function. Write characteres
- * @c: variable va_list
- *
- * Return: Writed character
- */
-int _putchar(char c)
-{
-	return (write(1, &c, 1));
+
+int _putchar(char c) {
+	write(1, & c, 1);
+	return (0);
 }
-/**
- * printc - Entry function. Print character
- * @list: variable va_list
- *
- * Return: 1 (nbyte)
- */
-int printc(va_list list)
-{
-	_putchar(va_arg(list, int));
+
+int print_char(va_list c) {
+	_putchar(va_arg(c, int));
 	return (1);
-
 }
-/**
- * print_string - Entry point. Print string
- * @s: variable va_list
- *
- * Return: k (nbytes) 6 (NULL)
- */
-int print_string(va_list s)
-{
-	char *str;
-	int k;
 
-	str = va_arg(s, char*);
-	if (str == NULL)
-	{
+int print_str(va_list s) {
+	int c, counts = 0;
+	char * str = va_arg(s, char *);
+	if (str == NULL) {
 		write(1, "(null)", 6);
 		return (6);
 	}
-	else
-	{
-		for (k = 0; str[k] != '\0'; k++)
-		{
-			_putchar(str[k]);
-		}
+	for (c = 0; str[c] != '\0'; c++) {
+		_putchar(str[c]);
+		counts++;
 	}
-	return (k);
+	return (counts);
 }
-/**
- * print_n - Entry point. Print number
- * @n: Variable va_list
- *
- * Return: count (nbytes)
- */
-int print_n(va_list n)
+
+int print_numbers(va_list v) {
+	long int value;
+	int denom = 1, counts = 0;
+	value = va_arg(v, int);
+	if (value < 0) {
+		_putchar('-');
+		counts++;
+		value *= -1;
+	}
+	while (value / denom > 9) {
+		denom *= 10;
+	}
+	while (denom >= 1) {
+		_putchar((value / denom) + '0');
+		counts++;
+		value %= denom;
+		denom /= 10;
+	}
+	return (counts);
+}
+
+
+int (*func_picker(const char b))(va_list)
 {
+	int c;
+	print printf_arr[] = {
+		{'c', print_char},
+		{'d', print_numbers},
+		{'i', print_numbers},
+		{'s', print_str},
+		{'\0', NULL}};
 
-	long int number;
-	int counter, aux_variable, base;
-
-	counter = 0;
-	number = va_arg(n, int);
-
-	if (number < 0)
+	for (c = 0; printf_arr[c].arg != '\0'; c++)
 	{
-		number *= -1;
-		_putchar(45);
-		counter++;
-	}
-	if (number >= 0 && number <= 9)
-	{
-		_putchar(number + 48);
-		counter++;
-	}
-	if (number > 9)
-	{
-		base = 10;
-
-		while (number / base > 9)
+		if (printf_arr[c].arg == b)
 		{
-			base *= 10;
-		}
-
-		while (base > 0)
-		{
-			aux_variable = number / base;
-			number = number % base;
-			_putchar(aux_variable + 48);
-			base = base / 10;
-			counter++;
+			return (printf_arr[c].func);
 		}
 	}
-	return (counter);
+	return (0);
+}
+
+int _printf(const char *format, ...)
+{
+	int c, output_counts = 0;
+	va_list ap;
+	va_start(ap, format);
+
+	for (c = 0; format[c] != '\0'; c++)
+	{
+		if (format[c] == '%')
+		{
+			if (format[c + 1] == '%')
+			{
+				_putchar('%');
+				output_counts++;
+				c++;
+			}
+
+			else if (func_picker(format[c + 1]) != NULL)
+			{
+				output_counts += func_picker(format[c + 1])(ap);
+				c++;
+			}
+
+			else
+			{
+				_putchar(format[c]);
+				output_counts++;
+			}
+		}
+		else
+		{
+			_putchar(format[c]);
+			output_counts++;
+		}
+	}
+	va_end(ap);
+	return (output_counts);
 }
