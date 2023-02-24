@@ -24,19 +24,23 @@ int print_str(va_list s) {
 	return (counts);
 }
 
-int print_numbers(va_list v) {
+int print_numbers(va_list v)
+{
 	long int value;
 	int denom = 1, counts = 0;
 	value = va_arg(v, int);
-	if (value < 0) {
+	if (value < 0)
+	{
 		_putchar('-');
 		counts++;
 		value *= -1;
 	}
-	while (value / denom > 9) {
+	while (value / denom > 9)
+	{
 		denom *= 10;
 	}
-	while (denom >= 1) {
+	while (denom >= 1)
+	{
 		_putchar((value / denom) + '0');
 		counts++;
 		value %= denom;
@@ -49,7 +53,8 @@ int print_numbers(va_list v) {
 int (*func_picker(const char b))(va_list)
 {
 	int c;
-	print printf_arr[] = {
+	print printf_arr[] =
+		{
 		{'c', print_char},
 		{'d', print_numbers},
 		{'i', print_numbers},

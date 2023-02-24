@@ -31,44 +31,7 @@ char *_getenv(const char *name)
 	return (NULL);
 }
 /**
- * _getline - get line command line from the prompt
- * @buffer: command buffer line string.
- * @size: size of the command buffer lines.
- * @std: file stream where comes the command buffer line.
- * Return: number of bytes copied in the buffer.
- **/
-ssize_t _getline(char **buffer, size_t *size, FILE *std)
-{
-	size_t count = 0;
-	size_t alloc = 1024;
-	int c;
-
-	if (!buffer || !size || !std)
-		return (-1);
-	if (*buffer == NULL)
-	{
-		*buffer = malloc(alloc);
-		if (!(*buffer))
-			return (-1);
-	}
-	while ((c = _getchar()) != EOF)
-	{
-		if (c == '\n')
-		{
-			count++;
-			break;
-		}
-		count++;
-		(*buffer)[count - 1] = c;
-	}
-	if (c == EOF)
-	{
-		return (-1);
-	}
-	(*buffer)[count] = '\0';
-	return (count);
-}
-/**
+ * _getline
  * splitline - get line command line from the prompt
  * @buffer: command line string.
  * Return: a pointer to string of command strings.

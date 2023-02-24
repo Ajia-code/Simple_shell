@@ -49,7 +49,6 @@ extern char **environ;
 char *_getenv(const char *name);
 char *_strcpy(char *dest, char *src);
 char *_strtok(char *str, char *delim);
-ssize_t _getline(char **bufline, size_t *size, FILE *std);
 char **splitline(char *command_line);
 void signal_c(int sign);
 int _myexit(char *line);
@@ -63,5 +62,7 @@ char *_which(link_t **head, char *av);
 void free_list(link_t *head);
 char *check_path(char *argm);
 int _myenv(char *line, int counter, char **argv, char **env);
-int _getchar(void);
+void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
+void assign_lineptr(char **lineptr, size_t *n, char *buffer, size_t b);
+ssize_t _getline(char **lineptr, size_t *n, FILE *stream);
 #endif

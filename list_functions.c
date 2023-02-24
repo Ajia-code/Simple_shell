@@ -63,4 +63,3 @@ void free_list(link_t *head)
 		free(temp);
 	}
 }
-
