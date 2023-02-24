@@ -1,9 +1,63 @@
-Simple shell team project
+<h1> Command interpreter - Simple Shell poject</h1></p>
+
+## BACKGROUND
+
 As part of the ALX Software Engineering Course, we impliimplem the shell program with some capabilities similar to those of the modern command line interpreters in Linux distributions.
+
+## Compilation
 
 The program is compiled using
 gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
 
+### Functions
+There are some functions used to run our simple shell
+
+* [_myexit](https://github.com/Villasdaniel/simple_shell/blob/master/built-in.c)
+Function that check command line to exit shell.
+
+* [signal_c](https://github.com/Villasdaniel/simple_shell/blob/master/built-in.c)
+Function that make shell ignore input signal Ctrl + C.
+
+* [_myenv](https://github.com/Villasdaniel/simple_shell/blob/master/built-in.c)
+Function tht prints the environment variables separated
+
+* [_getenv](https://github.com/Villasdaniel/simple_shell/blob/master/core_functions.c)
+Functions that find the env variable name
+
+* [_getline](https://github.com/Villasdaniel/simple_shell/blob/master/core_functions.c)
+Function that get line command line from the prompt.
+
+* [splitline](https://github.com/Villasdaniel/simple_shell/blob/master/core_functions.c)
+Function that get line command line from the prompt.
+
+* [execute_process](https://github.com/Villasdaniel/simple_shell/blob/master/core_functions.c)
+Function that execute a process.
+
+* [_which](https://github.com/Villasdaniel/simple_shell/blob/master/core_functions.c)
+Function that search for a command in the directories.
+
+* [_link](https://github.com/Villasdaniel/simple_shell/blob/master/list_functions.c)
+Function that built linked list with directories stored in the environment.
+
+* [_add_nodeint_end](https://github.com/Villasdaniel/simple_shell/blob/master/list_functions.c)
+Function that add a new string to a node at the end.
+
+* [free_list](https://github.com/Villasdaniel/simple_shell/blob/master/list_functions.c)
+Function that frees a list_t list.
+
+* [free_array](https://github.com/Villasdaniel/simple_shell/blob/master/list_functions.c)
+Function that frees an array.
+
+* [_strlen](https://github.com/Villasdaniel/simple_shell/blob/master/str_functions.c)
+Function that find the length of a string.
+
+* [_strcat](https://github.com/Villasdaniel/simple_shell/blob/master/str_functions.c)
+Function that concatenate directories with the 1st position of the array.
+
+* [_strtok](https://github.com/Villasdaniel/simple_shell/blob/master/str_functions.c)
+Function that breaks a string into a sequence.
+
+## Testing 
 The program works in both interactive and non interactive mode.
 
 Examples
