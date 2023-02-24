@@ -8,7 +8,7 @@ shell - command interpreter
 
 .SH DESCRIPTION
 .PP
-Shell is the standard command interpreter for Linux system. 
+Shell is the standard command interpreter for Linux system.
 
 .SS OVERVIEW
 .PP

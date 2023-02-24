@@ -25,7 +25,7 @@ typedef struct link
 struct link *next;
 } link_t;
 /**
-* struct formats - struct types
+* struct types - struct types
 * @arg: pointer to firts element.
 * @func: The function associated.
 */
@@ -34,7 +34,7 @@ typedef struct types
 {
 	char arg;
 	int (*func)(va_list);
-}print;
+} print;
 
 int _printf(const char *format, ...);
 int _putchar(char c);
